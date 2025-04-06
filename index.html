@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Panel Project | Team Gen-Mac</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C9A7;
+            --primary-dark: #00A58E;
+            --secondary: #845EC2;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+            --accent: #FF6B6B;
+            --gradient: linear-gradient(135deg, #00C9A7 0%, #845EC2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 201, 167, 0.3);
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1s ease;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/connected.png');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        nav {
+            background-color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-bottom: 5rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 201, 167, 0.4);
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 201, 167, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .benefits-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .benefits-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .benefits-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-item {
+            display: flex;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .benefit-text p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Maintenance Section */
+        .maintenance {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: white;
+            border-radius: 15px;
+            padding: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 5rem;
+        }
+
+        .maintenance-video {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .maintenance-video video {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .maintenance-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .maintenance-list {
+            list-style: none;
+        }
+
+        .maintenance-item {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .maintenance-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .maintenance-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .maintenance-item p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Campaign Section */
+        .campaign {
+            margin-bottom: 5rem;
+        }
+
+        .campaign-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Calculator Section */
+        .calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 5rem;
+        }
+
+        .calculator-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.2);
+            outline: none;
+        }
+
+        .appliance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .appliance-table th, 
+        .appliance-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .appliance-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+
+        .appliance-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .result {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .result strong {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .member-social a {
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .member-social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.5s ease;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .how-it-works,
+            .calculator,
+            .maintenance {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        
+
+        #robot-gif {
+            position: fixed; /* Changed from sticky to fixed */
+            top: -5px;
+            left: 20px;
+            z-index: 9999; /* Increased z-index to ensure it's above everything */
+            height: 100px;
+            width: auto;
+            pointer-events: none; /* Allows clicks to pass through to elements below */
+        }
+        
+        /* If you want the robot to be interactive (clickable/hoverable) */
+        #robot-gif.interactive {
+            pointer-events: auto;
+        }
+        
+        /* Optional animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        #robot-gif.animated {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Solar Energy Revolution</h1>
+    </header>
+    
+        <img id="robot-gif" src="robo.gif" alt="">
+   
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-solar-panel"></i>
+                <span>Gen-Mac</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#maintenance">Maintenance</a></li>
+                <li><a href="#campaign">Campaign</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#team">Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="solar.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1>Powering the Future with Solar Energy</h1>
+            <p>Join the renewable energy revolution and reduce your carbon footprint with our cutting-edge solar solutions</p>
+            <a href="#calculator" class="btn">Calculate Savings</a>
+            <a href="#how-it-works" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="section-title">
+            <h2>How Solar Panels Work</h2>
+            <p>Understanding the science behind solar energy conversion</p>
+        </div>
+        <div class="steps">
+            <div class="step" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h3>Sunlight Absorption</h3>
+                <p>Solar cells absorb photons from sunlight, creating electron-hole pairs in the semiconductor material.</p>
+            </div>
+            <div class="step" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Electricity Generation</h3>
+                <p>The movement of these electrons creates direct current (DC) electricity within the solar cells.</p>
+            </div>
+            <div class="step" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Current Conversion</h3>
+                <p>An inverter converts the DC electricity into alternating current (AC) for home or business use.</p>
+            </div>
+            <div class="step" data-aos="fade-up" data-aos-delay="400">
+                <div class="step-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Energy Distribution</h3>
+                <p>The converted electricity powers your appliances or feeds excess back into the grid.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits-section">
+        <div class="section-title">
+            <h2>Why Choose Solar Energy?</h2>
+            <p>The numerous advantages of switching to solar power</p>
+        </div>
+        <div class="benefits">
+            <div class="benefits-content" data-aos="fade-right">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Significant Cost Savings</h3>
+                        <p>Reduce your electricity bills by up to 90% and protect yourself from rising energy costs with a long-term renewable solution.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Environmentally Friendly</h3>
+                        <p>Solar energy is clean, renewable, and reduces your carbon footprint by eliminating greenhouse gas emissions.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Increased Property Value</h3>
+                        <p>Homes with solar panel systems sell for more and attract environmentally conscious buyers in today's market.</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="benefit-text">
+                        <h3>Low Maintenance</h3>
+                        <p>Solar systems require minimal maintenance and come with 20-25 year warranties for peace of mind.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-image" data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Solar Panel Benefits">
+            </div>
+        </div>
+    </section>
+
+    <section id="maintenance" class="maintenance">
+        <div class="maintenance-video" data-aos="fade-right">
+            <video autoplay controls>
+                <source src="v1.mp4"  type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="maintenance-content" data-aos="fade-left">
+            <h2>Solar Panel Maintenance</h2>
+            <p>Proper maintenance ensures optimal performance and longevity of your solar energy system:</p>
+            <ul class="maintenance-list">
+                <li class="maintenance-item">
+                    <h3>Regular Cleaning</h3>
+                    <p>Clean panels every 1-3 months to remove dust, dirt, and debris that can reduce efficiency by up to 25%.</p>
+                </li>
+                <li class="maintenance-item">
+                    <h3>Shade Monitoring</h3>
+                    <p>Regularly check for new obstructions like growing trees that may cast shadows on your panels.</p>
+                </li>
+                <li class="maintenance-item">
+                    <h3>Damage Inspection</h3>
+                    <p>Conduct visual inspections for cracks, loose connections, or other physical damage to the system.</p>
+                </li>
+                <li class="maintenance-item">
+                    <h3>Performance Tracking</h3>
+                    <p>Monitor energy output regularly to detect any significant drops in performance that may indicate issues.</p>
+                </li>
+                <li class="maintenance-item">
+                    <h3>Professional Checkups</h3>
+                    <p>Schedule annual professional inspections to ensure all components are functioning optimally.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="campaign" class="campaign">
+        <div class="section-title">
+            <h2>Our Awareness Campaign</h2>
+            <p>Spreading knowledge about solar energy benefits across communities</p>
+        </div>
+        <div class="campaign-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <img src="./1.jpeg" alt="Campaign 1">
+                    <div class="carousel-caption">Spreading awareness among students of Nankana Saheb School</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./2.jpeg" alt="Campaign 2">
+                    <div class="carousel-caption">Dr. Harpuneet Singh at GNDEC, shaping our vision for a brighter, cleaner future</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./3.jpeg" alt="Campaign 3">
+                    <div class="carousel-caption">Got new customers for the support of solar panel at their homes</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./4.jpeg" alt="Campaign 4">
+                    <div class="carousel-caption">Spread awareness for students of School of Eminence</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./5.jpeg" alt="Campaign 5">
+                    <div class="carousel-caption">An awareness campaign held at local courts</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./6.jpeg" alt="Campaign 6">
+                    <div class="carousel-caption">An awareness campaign at local panchayats</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="./7.jpeg" alt="Campaign 7">
+                    <div class="carousel-caption">Got support from principal of Govt. School, Gill village</div>
+                </div>
+            </div>
+            <button class="carousel-btn carousel-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn carousel-next"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator">
+        <div class="section-title">
+            <h2>Energy Savings Calculator</h2>
+            <p>Estimate your potential savings with solar energy</p>
+        </div>
+        <div class="calculator-form">
+            <div class="form-group">
+                <label for="numItems">How many appliances would you like to calculate?</label>
+                <input type="number" id="numItems" class="form-control" placeholder="Enter number of items" min="1">
+            </div>
+            <button class="btn" onclick="generateTable()">Generate Calculator</button>
+            <div id="calcSection"></div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="section-title">
+            <h2>Our Team</h2>
+            <p>The brilliant minds behind this solar energy initiative</p>
+        </div>
+        <div class="team-members">
+            <div class="team-member" data-aos="zoom-in">
+                <img src="https://i.postimg.cc/yY7wmZMP/14.jpg" alt="Himanshu Gambhir" class="member-image">
+                <h3 class="member-name">Himanshu Gambhir</h3>
+                <p class="member-role">Project Lead</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://i.postimg.cc/qq4ZxP5R/15.jpg" alt="Jeetu Kumar Jha" class="member-image">
+                <h3 class="member-name">Jeetu Kumar Jha</h3>
+                <p class="member-role">Technical Specialist</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://i.postimg.cc/ZnkPZ6Sy/Whats-App-Image-2025-04-05-at-23-33-25.jpg" alt="Harman Singh Pannu" class="member-image">
+                <h3 class="member-name">Harman Singh Pannu</h3>
+                <p class="member-role">Design Engineer</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://i.postimg.cc/Wb9f0f6N/16.jpg" alt="Gurkirat Singh" class="member-image">
+                <h3 class="member-name">Gurkirat Singh</h3>
+                <p class="member-role">Marketing Head</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://i.postimg.cc/qv5SHZzb/18.jpg" alt="Gurumeet Sandhir" class="member-image">
+                <h3 class="member-name">Gurumeet Sandhir</h3>
+                <p class="member-role">Research Analyst</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-member" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://i.postimg.cc/y6yG8NDS/19.jpg" alt="Sonu Tiwari" class="member-image">
+                <h3 class="member-name">Sonu Tiwari</h3>
+                <p class="member-role"> General Coordinator</p>
+                <div class="member-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Gen-Mac</h3>
+                <p>We are a team of passionate individuals dedicated to promoting solar energy solutions for a sustainable future.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#maintenance">Maintenance</a></li>
+                    <li><a href="#calculator">Savings Calculator</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> GNDEC Campus, Ludhiana, Punjab</p>
+                <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                <p><i class="fas fa-envelope"></i> info@genmacsolar.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Team Gen-Mac. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Carousel functionality
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(document.querySelectorAll('.carousel-slide'));
+        const nextBtn = document.querySelector('.carousel-next');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const indicators = Array.from(document.querySelectorAll('.indicator'));
+
+        let currentIndex = 0;
+        const slideWidth = slides[0].getBoundingClientRect().width;
+
+        // Arrange slides next to one another
+        const setSlidePosition = () => {
+            slides.forEach((slide, index) => {
+                slide.style.left = `${slideWidth * index}px`;
+            });
+        };
+
+        // Move to slide
+        const moveToSlide = (index) => {
+            track.style.transform = `translateX(-${slideWidth * index}px)`;
+            currentIndex = index;
+            updateIndicators();
+        };
+
+        // Update indicators
+        const updateIndicators = () => {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        };
+
+        // Next slide
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            moveToSlide(currentIndex);
+        });
+
+        // Previous slide
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            moveToSlide(currentIndex);
+        });
+
+        // Click on indicator
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                moveToSlide(index);
+            });
+        });
+
+        // Auto slide
+        let autoSlideInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            moveToSlide(currentIndex);
+        }, 5000);
+
+        // Pause auto slide on hover
+        const carousel = document.querySelector('.campaign-carousel');
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                moveToSlide(currentIndex);
+            }, 5000);
+        });
+
+        // Initialize
+        setSlidePosition();
+        moveToSlide(0);
+
+        // Calculator functionality
+        function generateTable() {
+            let numItems = document.getElementById("numItems").value;
+            if (numItems > 0) {
+                let tableHTML = `<table class="appliance-table">
+                    <thead>
+                        <tr>
+                            <th>Device Name</th>
+                            <th>Power (Watts)</th>
+                            <th>Quantity</th>
+                            <th>Hours/Day</th>
+                            <th>Daily Usage (Wh)</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+
+                for (let i = 0; i < numItems; i++) {
+                    tableHTML += `<tr>
+                        <td><input type='text' class='form-control' placeholder='Device name'></td>
+                        <td><input type='number' class='form-control' placeholder='Watts'></td>
+                        <td><input type='number' class='form-control' placeholder='Qty' min="1"></td>
+                        <td><input type='number' class='form-control' placeholder='Hours' min="0" max="24" step="0.5"></td>
+                        <td class="daily-usage">0</td>
+                    </tr>`;
+                }
+
+                tableHTML += `</tbody>
+                    </table>
+                    <button class='btn' onclick='calculateTotalEnergy()'>Calculate Total</button>
+                    <div class="result" id='totalEnergy'></div>`;
+
+                document.getElementById("calcSection").innerHTML = tableHTML;
+
+                // Add event listeners to calculate row totals
+                document.querySelectorAll('.appliance-table input').forEach(input => {
+                    input.addEventListener('input', calculateRowTotal);
+                });
+            } else {
+                alert("Please enter a valid number of items.");
+            }
+        }
+
+        function calculateRowTotal(event) {
+            const row = event.target.closest('tr');
+            if (row) {
+                const watts = parseFloat(row.querySelector('td:nth-child(2) input').value) || 0;
+                const quantity = parseFloat(row.querySelector('td:nth-child(3) input').value) || 0;
+                const hours = parseFloat(row.querySelector('td:nth-child(4) input').value) || 0;
+                const dailyUsageCell = row.querySelector('.daily-usage');
+                
+                const dailyUsage = watts * quantity * hours;
+                dailyUsageCell.textContent = dailyUsage.toFixed(2);
+            }
+        }
+
+        function calculateTotalEnergy() {
+            let totalEnergy = 0;
+            document.querySelectorAll('.daily-usage').forEach(cell => {
+                totalEnergy += parseFloat(cell.textContent) || 0;
+            });
+            
+            const totalEnergyElement = document.getElementById("totalEnergy");
+            totalEnergyElement.innerHTML = `
+                <p>Total Daily Energy Consumption: <strong>${totalEnergy.toFixed(2)} Wh</strong></p>
+                <p>Estimated Monthly Consumption: <strong>${(totalEnergy * 30 / 1000).toFixed(2)} kWh</strong></p>
+                <p>Potential Annual Savings: <strong>₹${(totalEnergy * 365 * 7 / 1000).toFixed(2)}</strong>*</p>
+                <p style="font-size: 0.8rem; margin-top: 10px;">*Based on average electricity rate of ₹7/kWh</p>
+            `;
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll initialization
+        // Note: In a real implementation, you would include AOS library
+        // This is just a placeholder for the demonstration
+        window.addEventListener('load', () => {
+            const animatedElements = document.querySelectorAll('[data-aos]');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transition = 'all 1s ease';
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                });
+                
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
